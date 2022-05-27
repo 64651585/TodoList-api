@@ -2,7 +2,6 @@ class Todo < ApplicationRecord
 
     validates :title, presence: true
 
-    scope :read, -> { where(read: false) }
-    scope :executed, -> { where(executed: false) }
-    scope :archived, -> { where(archived: false) }
+    enum status: [:read, :executed, :archived], _suffix: true
+    #enum status: { read: 0, executed: 1, archived: 2 }
 end
